@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js"
+    integrity="sha512-CX7sDOp7UTAq+i1FYIlf9Uo27x4os+kGeoT7rgwvY+4dmjqV0IuE/Bl5hVsjnQPQiTOhAX1O2r2j5bjsFBvv/A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/cesiumjs/1.78/Build/Cesium/Cesium.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
+
+  <link rel="icon" href="./assets/logo.jpg" type="image/icon type">
+  <link rel="stylesheet" href="./style.css">
+
+
+  <title>Crime Reporting Application </title>
+</head>
+
+<body>
+
+
+  
+
+
+  <div class="container">
+
+    <span class="big-circle"></span>
+    <img src="/assets/shapeweb.png" class="square" alt="" />
+    <div class="form">
+
+
+      <div class="contact-info">
+         
+
+        <div class="info">
+          <div class="information">
+            <img src="./assets/logo.jpg" class="icon" alt="" />
+            <p>Department Of Computer Science</p>
+          </div>
+         
+        </div>
+
+      </div>
+
+
+
+      <div class="contact-form">
+        <span class="circle one"></span>
+        <span class="circle two"></span>
+
+        <form id="com_form">
+          <h3 class="title">File Your Complaints</h3>
+          <h3 class="title">Page 1</h3>
+
+          <div class="input-container">
+            <input type="text" name="name" class="input" id="firstname" />
+            <label for="">First Name *</label>
+            <span>First Name *</span>
+          </div>
+          <div class="input-container">
+            <input type="text" name="name" class="input" id="lastname" />
+            <label for="">Last Name *</label>
+            <span>Last Name *</span>
+          </div>
+
+           
+          
+          <div class="input-container">
+            <input type="text" name="aadhar" class="input" id="aadharno" />
+            <label for="">Aadhar No*</label>
+            <span>Aadhar No *</span>
+          </div>
+          
+
+            <div class="input-container">
+              <input type="text" name="address" class="input" id="address"  />
+              <label for="">Address *</label>
+              <span>Address *</span>
+
+            </div>
+           
+           
+
+            <a href="/index1.html">
+                <button type="button" class="btn" id="nextbtn" > next</button>
+            </a>
+
+            <!-- <button type="button" class="btn" id="nextbtn" > next</button> -->
+      </div>
+      </form>
+
+    </div>
+  </div>
+  </div>
+  <script type="module">
+
+
+
+
+
+//FIXME - 
+
+
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyDhR3Qu2Z64CiLX5L1YABz6YMEC_8HPd5c",
+        authDomain: "crimereportingapplicatio-75122.firebaseapp.com",
+        projectId: "crimereportingapplicatio-75122",
+        storageBucket: "crimereportingapplicatio-75122.appspot.com",
+        messagingSenderId: "151903156507",
+        appId: "1:151903156507:web:bba42ea1535241e433fbbe"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+    import{getDatabase , ref ,set ,get, child, update, remove}
+    from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js"
+  
+      const  db = getDatabase();
+
+ 
+
+      //referance
+
+   var firstname=   document.getElementById("firstname");
+   var lastname=   document.getElementById("lastname");
+   var aadharno =   document.getElementById("aadharno");
+   var address=    document.getElementById("address");
+
+
+
+//ADD DATA
+     function insertdata(){
+
+        console.log("complaint registered");
+    
+    set(ref(db,"pdetails/"+firstname.value+"/"),{
+
+      
+        //report
+        firstname:firstname.value,
+        lastname:lastname.value,
+        aadharno:aadharno.value,
+        address:address.value,
+
+        
+  
+    }) 
+    .then(()=>{
+      alert("submited");
+    })
+    .catch((err)=>{
+      alert("error"+err);
+    });
+
+   }
+
+   var insert1 =document.getElementById("nextbtn");
+
+   insert1.addEventListener('click' , insertdata);
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+
+</body>
+
+</html>
