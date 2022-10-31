@@ -24,10 +24,6 @@
 
 <body>
 
-
-  
-
-
   <div class="container">
 
     <span class="big-circle"></span>
@@ -41,7 +37,7 @@
         <div class="info">
           <div class="information">
             <img src="./assets/logo.jpg" class="icon" alt="" />
-            <p>Department Of Computer Science</p>
+            <p>Crime Reporting Application</p>
           </div>
          
         </div>
@@ -142,19 +138,14 @@
 //ADD DATA
      function insertdata(){
 
-        console.log("complaint registered");
+ console.log("complaint registered");
     
     set(ref(db,"pdetails/"+firstname.value+"/"),{
-
-      
         //report
         firstname:firstname.value,
         lastname:lastname.value,
         aadharno:aadharno.value,
         address:address.value,
-
-        
-  
     }) 
     .then(()=>{
       alert("submited");
